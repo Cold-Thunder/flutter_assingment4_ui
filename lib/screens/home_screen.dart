@@ -1,7 +1,7 @@
 import 'package:assignment4_ui/utiles/all_colors.dart';
 import 'package:assignment4_ui/utiles/all_images/home_images/home_page_images.dart';
-import 'package:assignment4_ui/utiles/modules/home_modules/best_deal_module.dart';
-import 'package:assignment4_ui/utiles/modules/home_modules/category_card_module.dart';
+import 'package:assignment4_ui/utiles/models/home_modules/best_deal_module.dart';
+import 'package:assignment4_ui/utiles/models/home_modules/category_card_module.dart';
 import 'package:assignment4_ui/utiles/styles/text_styles/all_text_styles.dart';
 import 'package:assignment4_ui/utiles/texts/home_page_texts/home_page_all_texts.dart';
 import 'package:assignment4_ui/widgets/ad_card.dart';
@@ -145,3 +145,5 @@ class HomeScreen extends StatelessWidget{
     );
   }
 }
+
+// tooltip and snackbar topic 

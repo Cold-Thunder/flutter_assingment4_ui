@@ -19,4 +19,5 @@ class HomePageImages{
   static String surfImg = 'assets/images/home_images/surf_excel.png';
   static String teaImg = 'assets/images/home_images/tea_coffee.png';
   static String vegetablesImg = 'assets/images/home_images/vegetables.png';
+  static String man = 'assets/images/home_images/man.png';
 }

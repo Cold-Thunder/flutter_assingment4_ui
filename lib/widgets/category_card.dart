@@ -1,5 +1,5 @@
 import 'package:assignment4_ui/utiles/all_colors.dart';
-import 'package:assignment4_ui/utiles/modules/home_modules/category_card_module.dart';
+import 'package:assignment4_ui/utiles/models/home_modules/category_card_module.dart';
 import 'package:assignment4_ui/utiles/styles/text_styles/all_text_styles.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

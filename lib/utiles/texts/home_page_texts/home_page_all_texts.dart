@@ -1,6 +1,6 @@
 import 'package:assignment4_ui/utiles/all_images/home_images/home_page_images.dart';
-import 'package:assignment4_ui/utiles/modules/home_modules/best_deal_module.dart';
-import 'package:assignment4_ui/utiles/modules/home_modules/category_card_module.dart';
+import 'package:assignment4_ui/utiles/models/home_modules/best_deal_module.dart';
+import 'package:assignment4_ui/utiles/models/home_modules/category_card_module.dart';
 
 class HomePageAllTexts {
   static String appTitle = 'Grocery App';

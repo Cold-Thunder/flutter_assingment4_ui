@@ -12,6 +12,7 @@ class AppMaterialPage extends StatelessWidget{
       title: HomePageAllTexts.appTitle,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        scaffoldBackgroundColor: AllColors.appBarWhite,
         appBarTheme: AppBarTheme(
           backgroundColor: AllColors.appBarWhite,
           iconTheme: IconThemeData(
@@ -23,7 +24,7 @@ class AppMaterialPage extends StatelessWidget{
         '/': (context)=>HomeScreen(),
         '/item_details': (context)=> ItemDetailsScreen()
       },
-      initialRoute: '/'
+      initialRoute: '/item_details'
     );
   }
 }

@@ -1,4 +1,3 @@
-import 'package:assignment4_ui/utiles/all_colors.dart';
 import 'package:assignment4_ui/utiles/methods.dart';
 import 'package:assignment4_ui/utiles/styles/text_styles/all_text_styles.dart';
 import 'package:assignment4_ui/utiles/texts/item_details_texts/item_details_all_texts.dart';
@@ -14,7 +13,7 @@ class RatingSection extends StatefulWidget{
 
 class _RatingSectionState extends State<RatingSection> {
 
-  late List stars;
+  late List<Widget> stars;
 
   @override
   void initState(){
@@ -38,9 +37,7 @@ class _RatingSectionState extends State<RatingSection> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
-              children: stars.map((item){
-                return Icon(Icons.star, size: 24, color: AllColors.filterGreen);
-              }).toList(),
+              children: stars.map((item)=>item).toList(),
             ),
             Text('${ItemDetailsAllTexts.totalReviewCount} Reviews',
               style: AllTextStyles.searchTextStyle.copyWith(

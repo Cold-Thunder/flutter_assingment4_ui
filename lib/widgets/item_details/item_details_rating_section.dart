@@ -14,7 +14,7 @@ class ItemDetailsRatingSection extends StatefulWidget{
 
 class _ItemDetailsRatingSectionState extends State<ItemDetailsRatingSection> {
 
-  late List stars;
+  late List<Widget> stars;
 
   @override
   void initState(){
@@ -28,10 +28,8 @@ class _ItemDetailsRatingSectionState extends State<ItemDetailsRatingSection> {
     return Row(children: [
       // stars
       Row(
-          children: stars.map((item) {
-            return Icon(Icons.star,
-                size: 20, color: AllColors.filterGreen);
-          }).toList()),
+          children: stars.map((item)=>item).toList()
+  ),
       const SizedBox(width: 5),
       Text(ItemDetailsAllTexts.itemRating,
           style: AllTextStyles.seeAllTextStyle.copyWith(

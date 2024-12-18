@@ -53,22 +53,33 @@ class _ItemUserReviewCardState extends State<ItemUserReviewCard> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                     Text(ItemDetailsAllTexts.userName,
-                         style: AllTextStyles.searchTextStyle.copyWith(
-                           color: AllColors.headingBlack
+                         style: AllTextStyles.headingTextStyle.copyWith(
+                           fontWeight: FontWeight.w600,
+                           fontSize: 18
                          )),
                   Text(ItemDetailsAllTexts.date,
                     style: AllTextStyles.searchTextStyle
-                  )
+                  ),
+
                 ]
               ),
               const Spacer(),
               Row(
                 children: stars.map((item)=>item).toList()
-              )
-            ]
+              ),
+            ],
+          ),
+          // review texts
+          Padding(
+            padding: const EdgeInsets.only(left: 60),
+            child: Text(ItemDetailsAllTexts.review,
+                style: AllTextStyles.searchTextStyle.copyWith(
+                    color: AllColors.headingBlack
+                )),
           )
-        ]
-      )
+
+        ],
+      ),
     );
   }
 }

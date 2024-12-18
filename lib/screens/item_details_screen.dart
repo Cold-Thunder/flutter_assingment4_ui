@@ -1,7 +1,12 @@
 import 'package:assignment4_ui/utiles/all_colors.dart';
 import 'package:assignment4_ui/utiles/all_images/home_images/home_page_images.dart';
+import 'package:assignment4_ui/utiles/methods.dart';
+import 'package:assignment4_ui/utiles/models/home_modules/best_deal_module.dart';
 import 'package:assignment4_ui/utiles/styles/text_styles/all_text_styles.dart';
+import 'package:assignment4_ui/utiles/texts/home_page_texts/home_page_all_texts.dart';
 import 'package:assignment4_ui/utiles/texts/item_details_texts/item_details_all_texts.dart';
+import 'package:assignment4_ui/widgets/best_deal_card.dart';
+import 'package:assignment4_ui/widgets/item_details/add_cart.dart';
 import 'package:assignment4_ui/widgets/item_details/item_description_section.dart';
 import 'package:assignment4_ui/widgets/item_details/item_details_rating_section.dart';
 import 'package:assignment4_ui/widgets/item_details/item_price_section.dart';
@@ -19,104 +24,189 @@ class ItemDetailsScreen extends StatefulWidget {
 
 class _ItemDetailsState extends State<ItemDetailsScreen> {
   bool isFav = false;
-
+  final List<BestDealModule> _similarProducts = HomePageAllTexts.bestDeals;
+  int count = 1;
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return SafeArea(
-        child: Scaffold(
-            appBar: AppBar(
-                leading: IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(Icons.arrow_back_ios,
-                        color: AllColors.headingBlack, size: 22)),
-                title: Text(ItemDetailsAllTexts.itemAppBarTitle,
-                    style: AllTextStyles.headingTextStyle.copyWith(
-                      fontSize: 20,
-                    )),
-                centerTitle: true,
-                actions: [
-                  InkWell(
-                    onTap: () {
-                      setState(() {
-                        isFav = !isFav;
-                      });
-                    },
-                    child: SizedBox(
-                        height: 18,
-                        width: 18,
-                        child: isFav
-                            ? Icon(Icons.favorite,
-                                size: 18, color: AllColors.favoriteRed)
-                            : SvgPicture.asset(HomePageImages.heartIcon,
-                                height: 18, width: 18)),
+      child: Scaffold(
+        appBar: AppBar(
+            leading: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(Icons.arrow_back_ios,
+                    color: AllColors.headingBlack, size: 22)),
+            title: Text(ItemDetailsAllTexts.itemAppBarTitle,
+                style: AllTextStyles.headingTextStyle.copyWith(
+                  fontSize: 20,
+                )),
+            centerTitle: true,
+            actions: [
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    isFav = !isFav;
+                  });
+                },
+                child: SizedBox(
+                    height: 18,
+                    width: 18,
+                    child: isFav
+                        ? Icon(Icons.favorite,
+                            size: 18, color: AllColors.favoriteRed)
+                        : SvgPicture.asset(HomePageImages.heartIcon,
+                            height: 18, width: 18)),
+              ),
+              const SizedBox(width: 15)
+            ]),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              const SizedBox(height: 20),
+              // top image section
+              SizedBox(width: width, height: 250, child: TopImage()),
+              const SizedBox(height: 40),
+              // title section
+              SizedBox(
+                  width: width * 0.7,
+                  child: Text(ItemDetailsAllTexts.itemTitle,
+                      style: AllTextStyles.headingTextStyle
+                          .copyWith(fontSize: 22))),
+              const SizedBox(height: 10),
+              // rating section
+              const ItemDetailsRatingSection(rating: 4),
+              const SizedBox(height: 10),
+              // price section
+              ItemPriceSection(
+                  price: ItemDetailsAllTexts.itemPrice,
+                  prePrice: ItemDetailsAllTexts.itemPrePrice,
+                  isOffer: true),
+              const SizedBox(
+                height: 10,
+              ),
+              Divider(
+                color: AllColors.searchTextGrey,
+                thickness: 1,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              // description section
+              ItemDescriptionSection(),
+              const SizedBox(
+                height: 20,
+              ),
+              Divider(
+                color: AllColors.searchTextGrey,
+                thickness: 1,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              // review and rating heading
+              Text(
+                ItemDetailsAllTexts.reviewAndRating,
+                style: AllTextStyles.headingTextStyle.copyWith(fontSize: 18),
+              ),
+              const SizedBox(height: 20),
+              // rating section Starts here
+              const RatingSection(rating: 4),
+              const SizedBox(height: 20),
+              // users review section
+              const SizedBox(child: ItemUserReviewCard(rating: 3)),
+              const SizedBox(
+                height: 20,
+              ),
+              Divider(
+                color: AllColors.searchTextGrey,
+                thickness: 1,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+                  // similar products heading
+                  Text(
+                    ItemDetailsAllTexts.similarProduct,
+                    style: AllTextStyles.headingTextStyle.copyWith(fontSize: 18),
                   ),
-                  const SizedBox(width: 15)
-                ]),
-            body: SingleChildScrollView(
-                child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 20),
-                          // top image section
-                          SizedBox(
-                              width: width, height: 250, child: TopImage()),
-                          const SizedBox(height: 40),
-                          // title section
-                          SizedBox(
-                              width: width * 0.7,
-                              child: Text(ItemDetailsAllTexts.itemTitle,
-                                  style: AllTextStyles.headingTextStyle
-                                      .copyWith(fontSize: 22))),
-                          const SizedBox(height: 10),
-                          // rating section
-                          const ItemDetailsRatingSection(rating: 4),
-                          const SizedBox(height: 10),
-                          // price section
-                          ItemPriceSection(
-                              price: ItemDetailsAllTexts.itemPrice,
-                              prePrice: ItemDetailsAllTexts.itemPrePrice,
-                              isOffer: true),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Divider(
-                            color: AllColors.searchTextGrey,
-                            thickness: 1,
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          // description section
-                          ItemDescriptionSection(),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Divider(
-                            color: AllColors.searchTextGrey,
-                            thickness: 1,
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Text(
-                            ItemDetailsAllTexts.reviewAndRating,
-                            style: AllTextStyles.headingTextStyle
-                                .copyWith(fontSize: 18),
-                          ),
-                          const SizedBox(height: 20),
-                          // rating section Starts here
-                          const RatingSection(rating: 4),
-                          const SizedBox(height: 20),
-                          // users review section
-                          const SizedBox(
-                            height: 250,
-                            child: ItemUserReviewCard(rating: 3)
-                          )
-                        ])))));
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  // similar products
+                  SizedBox(
+                    height: 260,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: _similarProducts.length,
+                        itemBuilder: (context, index){
+                        return BestDealCard(cardInfo: _similarProducts[index]);
+                        }
+                    )
+                  ),
+                  const SizedBox(height: 20),
+                  // increase and decrease button
+                  Row(
+                    children:[
+                      Container(
+                        height: 55,
+                        width: width*0.3,
+                        decoration: BoxDecoration(
+                          color: AllColors.searchBarGrey,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            // decrement
+                              InkWell(
+                                onTap: (){
+                                  setState((){
+                                    count = Methods.decrease(count);
+                                  });
+                                },
+                                child: Text('-', style: count > 1 ?
+                                    AllTextStyles.seeAllTextStyle.copyWith(
+                                      fontSize: 26,
+                                    )
+                                    : AllTextStyles.searchTextStyle.copyWith(
+                                  fontSize: 26
+                                )),
+                              ),
+                            Text(count.toString(),
+                              style: AllTextStyles.headingTextStyle.copyWith(
+                                fontSize: 20
+                              ),
+                            ),
+                            // increment
+                            InkWell(
+                              onTap: (){
+                                setState((){
+                                  count = Methods.increase(count);
+                                });
+                              },
+                              child: Text('+',
+                                  style: AllTextStyles.seeAllTextStyle.copyWith(
+                                    fontSize: 26
+                                  )
+                              ),
+                            ),
+                          ]
+                        )
+                      ),
+                      const SizedBox(width: 10),
+                      // add cart button
+                      AddCart(count: count),
+                      const SizedBox(height: 40),
+                    ]
+                  )
+            ]),
+          ),
+        ),
+      ),
+    );
   }
 }

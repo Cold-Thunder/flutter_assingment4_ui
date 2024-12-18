@@ -14,4 +14,15 @@ class Methods{
     }
     return stars;
   }
+
+  static int decrease(int count){
+    if(count > 1){
+      count -= 1;
+    }
+    return count;
+  }
+
+  static int increase(int count){
+    return count += 1;
+  }
 }

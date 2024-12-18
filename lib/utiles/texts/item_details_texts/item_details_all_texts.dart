@@ -7,6 +7,7 @@ class ItemDetailsAllTexts{
   static String itemPrePrice = '\$14';
   static String itemOffer = '10% Off';
   static String reviewAndRating = 'Review & Ratings';
+  static String similarProduct = 'Similar Products';
   static String totalReview = '4.2';
   static String totalReviewCount = '120';
   static String userName = 'Johnson Smith';
@@ -14,4 +15,6 @@ class ItemDetailsAllTexts{
   static String similarProducts = 'Similar Products';
   static String itemDes = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
   static String readMore = " Read More";
+  static String addCart = 'Add to Cart';
+  static String review ='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been ';
 }
